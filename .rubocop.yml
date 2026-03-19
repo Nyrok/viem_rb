@@ -1,0 +1,70 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7
+  Exclude:
+    - "vendor/**/*"
+    - "bin/**/*"
+
+# Line length
+Layout/LineLength:
+  Max: 120
+
+# Method length
+Metrics/MethodLength:
+  Max: 30
+
+# Block length
+Metrics/BlockLength:
+  Max: 60
+  Exclude:
+    - "spec/**/*"
+    - "*.gemspec"
+
+# Class length
+Metrics/ClassLength:
+  Max: 200
+
+# ABC size
+Metrics/AbcSize:
+  Max: 30
+
+# Allow longer parameter lists in initializers
+Metrics/ParameterLists:
+  Max: 8
+
+# Documentation is not required for modules/classes
+Style/Documentation:
+  Enabled: false
+
+# Allow trailing commas in multi-line literals
+Style/TrailingCommaInArgList:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# Allow guard clauses
+Style/GuardClause:
+  Enabled: true
+
+# Prefer double-quoted strings
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# Allow numeric separators
+Style/NumericLiterals:
+  Enabled: false
+
+# Allow rescue with StandardError
+Style/RescueStandardError:
+  EnforcedStyle: implicit
+
+# Gemspec
+Gemspec/DevelopmentDependencies:
+  Enabled: false
