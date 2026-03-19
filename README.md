@@ -1,5 +1,12 @@
 # viem_rb
 
+[![Gem Version](https://img.shields.io/gem/v/viem_rb.svg)](https://rubygems.org/gems/viem_rb)
+[![Gem Downloads](https://img.shields.io/gem/dt/viem_rb.svg)](https://rubygems.org/gems/viem_rb)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Ruby](https://img.shields.io/badge/ruby-%3E%3D%202.7-red.svg)](https://www.ruby-lang.org)
+
+📦 **[https://rubygems.org/gems/viem_rb](https://rubygems.org/gems/viem_rb)**
+
 A Ruby/Rails adaptation of [viem](https://viem.sh) — the TypeScript Ethereum library. Provides Ethereum clients, ABI encoding/decoding, account management, and utilities for Ruby 2.7+ and Rails 7+ applications.
 
 ## Installation
@@ -363,3 +370,7 @@ end
 ## License
 
 MIT License. Copyright 2025 Noryk. See [LICENSE](LICENSE) for details.
+
+---
+
+*viem_rb is available on [RubyGems](https://rubygems.org/gems/viem_rb). Inspired by [viem](https://viem.sh).*
