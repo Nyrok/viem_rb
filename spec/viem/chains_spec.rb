@@ -87,7 +87,10 @@ RSpec.describe "Viem chain definitions" do
   end
 
   describe "all testnets" do
-    let(:testnets) { [Viem::SEPOLIA, Viem::GOERLI, Viem::POLYGON_MUMBAI, Viem::OPTIMISM_GOERLI, Viem::ARBITRUM_GOERLI, Viem::BASE_GOERLI, Viem::AVALANCHE_FUJI, Viem::BSC_TESTNET] }
+    let(:testnets) do
+      [Viem::SEPOLIA, Viem::GOERLI, Viem::POLYGON_MUMBAI, Viem::OPTIMISM_GOERLI, Viem::ARBITRUM_GOERLI, Viem::BASE_GOERLI,
+       Viem::AVALANCHE_FUJI, Viem::BSC_TESTNET,]
+    end
 
     it "all have testnet? == true" do
       testnets.each { |chain| expect(chain.testnet?).to be true }
@@ -95,7 +98,10 @@ RSpec.describe "Viem chain definitions" do
   end
 
   describe "all mainnets" do
-    let(:mainnets) { [Viem::MAINNET, Viem::POLYGON, Viem::OPTIMISM, Viem::ARBITRUM, Viem::BASE, Viem::AVALANCHE, Viem::BSC, Viem::GNOSIS, Viem::FANTOM, Viem::CELO] }
+    let(:mainnets) do
+      [Viem::MAINNET, Viem::POLYGON, Viem::OPTIMISM, Viem::ARBITRUM, Viem::BASE, Viem::AVALANCHE, Viem::BSC, Viem::GNOSIS,
+       Viem::FANTOM, Viem::CELO,]
+    end
 
     it "all have testnet? == false" do
       mainnets.each { |chain| expect(chain.testnet?).to be false }
@@ -112,7 +118,7 @@ RSpec.describe "Viem chain definitions" do
         Viem::BASE, Viem::BASE_GOERLI,
         Viem::AVALANCHE, Viem::AVALANCHE_FUJI,
         Viem::BSC, Viem::BSC_TESTNET,
-        Viem::GNOSIS, Viem::FANTOM, Viem::CELO
+        Viem::GNOSIS, Viem::FANTOM, Viem::CELO,
       ]
     end
 

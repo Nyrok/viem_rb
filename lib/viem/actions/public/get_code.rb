@@ -12,7 +12,7 @@ module Viem
 
         def get_storage_at(address:, slot:, block_tag: "latest")
           address = Utils::Address.get_address(address)
-          slot    = slot.is_a?(Integer) ? Utils::Hex.number_to_hex(slot, size: 32) : slot
+          slot    = Utils::Hex.number_to_hex(slot, size: 32) if slot.is_a?(Integer)
           @transport.request("eth_getStorageAt", [address, slot, block_tag.to_s])
         end
       end

@@ -10,12 +10,11 @@ module Viem
         end
 
         def get_fee_history(block_count:, newest_block: "latest", reward_percentiles: [])
-          result = @transport.request("eth_feeHistory", [
-            Utils::Hex.number_to_hex(block_count),
-            newest_block.to_s,
-            reward_percentiles
-          ])
-          result
+          @transport.request("eth_feeHistory", [
+                               Utils::Hex.number_to_hex(block_count),
+                               newest_block.to_s,
+                               reward_percentiles,
+                             ],)
         end
 
         def get_max_priority_fee_per_gas

@@ -58,8 +58,8 @@ module Viem
 
       private_class_method def self.twos_complement(value)
         bits = value.bit_length + 1
-        bits += (8 - bits % 8) if (bits % 8) != 0
-        (2**bits + value).to_s(16)
+        bits += (8 - (bits % 8)) if (bits % 8) != 0
+        ((2**bits) + value).to_s(16)
       end
     end
   end

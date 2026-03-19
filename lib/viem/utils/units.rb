@@ -26,11 +26,11 @@ module Viem
       end
 
       def self.parse_units(value, decimals)
-        (BigDecimal(value.to_s) * 10**decimals).to_i
+        (BigDecimal(value.to_s) * (10**decimals)).to_i
       end
 
       def self.format_units(value, decimals)
-        (BigDecimal(value.to_s) / 10**decimals).to_s("F")
+        (BigDecimal(value.to_s) / (10**decimals)).to_s("F")
       end
     end
   end

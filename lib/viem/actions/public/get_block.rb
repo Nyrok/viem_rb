@@ -32,13 +32,13 @@ module Viem
         def format_block(raw)
           raw.each_with_object({}) do |(k, v), h|
             key = k.to_sym
-            if BLOCK_STRING_FIELDS.include?(k.to_s)
-              h[key] = v
-            elsif v.is_a?(String) && v.start_with?("0x") && v.match?(/\A0x[0-9a-f]+\z/)
-              h[key] = Utils::Hex.hex_to_number(v)
-            else
-              h[key] = v
-            end
+            h[key] = if BLOCK_STRING_FIELDS.include?(k.to_s)
+                       v
+                     elsif v.is_a?(String) && v.start_with?("0x") && v.match?(/\A0x[0-9a-f]+\z/)
+                       Utils::Hex.hex_to_number(v)
+                     else
+                       v
+                     end
           end
         end
       end

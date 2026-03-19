@@ -7,7 +7,8 @@ module Viem
         def get_logs(address: nil, event: nil, args: {}, from_block: nil, to_block: nil)
           params = {}
           params[:address]   = address if address
-          params[:fromBlock] = from_block.is_a?(Integer) ? Utils::Hex.number_to_hex(from_block) : (from_block || "earliest")
+          params[:fromBlock] =
+            from_block.is_a?(Integer) ? Utils::Hex.number_to_hex(from_block) : (from_block || "earliest")
           params[:toBlock]   = to_block.is_a?(Integer) ? Utils::Hex.number_to_hex(to_block) : (to_block || "latest")
           params[:topics]    = encode_event_topics(event, args) if event
           results = @transport.request("eth_getLogs", [stringify_keys(params)])
@@ -16,7 +17,7 @@ module Viem
 
         private
 
-        def encode_event_topics(event_abi, args)
+        def encode_event_topics(event_abi, _args)
           sig    = event_signature(event_abi)
           topic0 = Utils::Hash.keccak256(sig)
           [topic0]

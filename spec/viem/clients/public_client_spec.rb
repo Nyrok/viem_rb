@@ -12,7 +12,7 @@ RSpec.describe Viem::Clients::PublicClient do
       .to_return(
         status: 200,
         body: { jsonrpc: "2.0", id: 1, result: result }.to_json,
-        headers: { "Content-Type" => "application/json" }
+        headers: { "Content-Type" => "application/json" },
       )
   end
 
@@ -22,7 +22,7 @@ RSpec.describe Viem::Clients::PublicClient do
       .to_return(
         status: 200,
         body: { jsonrpc: "2.0", id: 1, error: { code: code, message: message } }.to_json,
-        headers: { "Content-Type" => "application/json" }
+        headers: { "Content-Type" => "application/json" },
       )
   end
 
@@ -67,14 +67,14 @@ RSpec.describe Viem::Clients::PublicClient do
   describe "#get_block" do
     let(:raw_block) do
       {
-        "number"           => "0x1",
-        "hash"             => "0xabc",
-        "parentHash"       => "0x000",
-        "timestamp"        => "0x64c8f3b4",
-        "gasLimit"         => "0x1c9c380",
-        "gasUsed"          => "0x0",
-        "baseFeePerGas"    => "0x7",
-        "transactions"     => []
+        "number" => "0x1",
+        "hash" => "0xabc",
+        "parentHash" => "0x000",
+        "timestamp" => "0x64c8f3b4",
+        "gasLimit" => "0x1c9c380",
+        "gasUsed" => "0x0",
+        "baseFeePerGas" => "0x7",
+        "transactions" => [],
       }
     end
 
@@ -107,16 +107,16 @@ RSpec.describe Viem::Clients::PublicClient do
   describe "#get_transaction" do
     let(:raw_tx) do
       {
-        "hash"             => "0xtxhash",
-        "blockNumber"      => "0xa",
+        "hash" => "0xtxhash",
+        "blockNumber" => "0xa",
         "transactionIndex" => "0x0",
-        "nonce"            => "0x5",
-        "gas"              => "0x5208",
-        "gasPrice"         => "0x3b9aca00",
-        "value"            => "0xde0b6b3a7640000",
-        "from"             => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
-        "to"               => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
-        "input"            => "0x"
+        "nonce" => "0x5",
+        "gas" => "0x5208",
+        "gasPrice" => "0x3b9aca00",
+        "value" => "0xde0b6b3a7640000",
+        "from" => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+        "to" => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+        "input" => "0x",
       }
     end
 
@@ -138,15 +138,15 @@ RSpec.describe Viem::Clients::PublicClient do
   describe "#get_transaction_receipt" do
     let(:raw_receipt) do
       {
-        "transactionHash"  => "0xtxhash",
-        "blockNumber"      => "0xa",
+        "transactionHash" => "0xtxhash",
+        "blockNumber" => "0xa",
         "transactionIndex" => "0x0",
-        "gasUsed"          => "0x5208",
+        "gasUsed" => "0x5208",
         "cumulativeGasUsed" => "0x5208",
-        "status"           => "0x1",
-        "logs"             => [],
-        "from"             => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
-        "to"               => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+        "status" => "0x1",
+        "logs" => [],
+        "from" => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+        "to" => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
       }
     end
 
@@ -210,8 +210,8 @@ RSpec.describe Viem::Clients::PublicClient do
     it "returns estimated gas as an integer" do
       stub_rpc("eth_estimateGas", result: "0x5208")
       gas = client.estimate_gas(
-        to:   "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
-        from: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+        to: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+        from: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
       )
       expect(gas).to eq(21_000)
     end
@@ -221,8 +221,8 @@ RSpec.describe Viem::Clients::PublicClient do
     it "sends eth_call and returns the raw result" do
       stub_rpc("eth_call", result: "0x0000000000000000000000000000000000000000000000000000000000000001")
       result = client.call(
-        to:   "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
-        data: "0x70a08231000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"
+        to: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+        data: "0x70a08231000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045",
       )
       expect(result).to start_with("0x")
     end
@@ -238,15 +238,15 @@ RSpec.describe Viem::Clients::PublicClient do
   describe "#get_logs" do
     it "returns formatted logs" do
       raw_log = {
-        "address"          => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
-        "topics"           => ["0xddf252ad"],
-        "data"             => "0x",
-        "blockNumber"      => "0xa",
+        "address" => "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+        "topics" => ["0xddf252ad"],
+        "data" => "0x",
+        "blockNumber" => "0xa",
         "transactionIndex" => "0x0",
-        "logIndex"         => "0x0",
-        "transactionHash"  => "0xtxhash",
-        "blockHash"        => "0xblockhash",
-        "removed"          => false
+        "logIndex" => "0x0",
+        "transactionHash" => "0xtxhash",
+        "blockHash" => "0xblockhash",
+        "removed" => false,
       }
       stub_rpc("eth_getLogs", result: [raw_log])
       logs = client.get_logs(from_block: 0, to_block: 10)

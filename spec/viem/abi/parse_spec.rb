@@ -4,9 +4,9 @@ RSpec.describe Viem::Abi::Parse do
   describe ".parse_abi" do
     it "parses multiple signatures at once" do
       result = described_class.parse_abi([
-        "function balanceOf(address account) view returns (uint256)",
-        "event Transfer(address indexed from, address indexed to, uint256 value)"
-      ])
+                                           "function balanceOf(address account) view returns (uint256)",
+                                           "event Transfer(address indexed from, address indexed to, uint256 value)",
+                                         ])
       expect(result.length).to eq(2)
       expect(result[0]["type"]).to eq("function")
       expect(result[1]["type"]).to eq("event")

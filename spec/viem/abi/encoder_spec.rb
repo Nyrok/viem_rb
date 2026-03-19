@@ -3,24 +3,24 @@
 RSpec.describe Viem::Abi::Encoder do
   let(:balanceOf_abi) do
     {
-      "name"            => "balanceOf",
-      "type"            => "function",
-      "inputs"          => [{ "type" => "address", "name" => "account" }],
-      "outputs"         => [{ "type" => "uint256", "name" => "" }],
-      "stateMutability" => "view"
+      "name" => "balanceOf",
+      "type" => "function",
+      "inputs" => [{ "type" => "address", "name" => "account" }],
+      "outputs" => [{ "type" => "uint256", "name" => "" }],
+      "stateMutability" => "view",
     }
   end
 
   let(:transfer_abi) do
     {
-      "name"            => "transfer",
-      "type"            => "function",
-      "inputs"          => [
+      "name" => "transfer",
+      "type" => "function",
+      "inputs" => [
         { "type" => "address", "name" => "to" },
-        { "type" => "uint256", "name" => "amount" }
+        { "type" => "uint256", "name" => "amount" },
       ],
-      "outputs"         => [{ "type" => "bool", "name" => "" }],
-      "stateMutability" => "nonpayable"
+      "outputs" => [{ "type" => "bool", "name" => "" }],
+      "stateMutability" => "nonpayable",
     }
   end
 
@@ -62,10 +62,10 @@ RSpec.describe Viem::Abi::Encoder do
 
     it "encodes with no args" do
       abi = {
-        "name"   => "totalSupply",
-        "type"   => "function",
+        "name" => "totalSupply",
+        "type" => "function",
         "inputs" => [],
-        "outputs" => [{ "type" => "uint256", "name" => "" }]
+        "outputs" => [{ "type" => "uint256", "name" => "" }],
       }
       result = described_class.encode_function_data(abi, args: [])
       expect(result).to start_with("0x")
@@ -83,8 +83,8 @@ RSpec.describe Viem::Abi::Encoder do
 
     it "appends encoded constructor args" do
       constructor_abi = {
-        "type"   => "constructor",
-        "inputs" => [{ "type" => "uint256", "name" => "initialSupply" }]
+        "type" => "constructor",
+        "inputs" => [{ "type" => "uint256", "name" => "initialSupply" }],
       }
       result = described_class.encode_deploy_data(bytecode, constructor_abi, args: [1000])
       expect(result).to start_with("0x6080604052")

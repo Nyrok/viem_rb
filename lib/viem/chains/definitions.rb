@@ -9,7 +9,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Ether", symbol: "ETH", decimals: 18),
       rpc_urls: { default: { http: ["https://cloudflare-eth.com"] } },
       block_explorers: { default: { name: "Etherscan", url: "https://etherscan.io" } },
-      testnet: false
+      testnet: false,
     )
 
     SEPOLIA = Chain.new(
@@ -19,7 +19,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Sepolia Ether", symbol: "ETH", decimals: 18),
       rpc_urls: { default: { http: ["https://rpc.sepolia.org"] } },
       block_explorers: { default: { name: "Etherscan", url: "https://sepolia.etherscan.io" } },
-      testnet: true
+      testnet: true,
     )
 
     GOERLI = Chain.new(
@@ -29,7 +29,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Goerli Ether", symbol: "ETH", decimals: 18),
       rpc_urls: { default: { http: ["https://rpc.ankr.com/eth_goerli"] } },
       block_explorers: { default: { name: "Etherscan", url: "https://goerli.etherscan.io" } },
-      testnet: true
+      testnet: true,
     )
 
     POLYGON = Chain.new(
@@ -39,7 +39,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "MATIC", symbol: "MATIC", decimals: 18),
       rpc_urls: { default: { http: ["https://polygon-rpc.com"] } },
       block_explorers: { default: { name: "PolygonScan", url: "https://polygonscan.com" } },
-      testnet: false
+      testnet: false,
     )
 
     POLYGON_MUMBAI = Chain.new(
@@ -49,7 +49,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "MATIC", symbol: "MATIC", decimals: 18),
       rpc_urls: { default: { http: ["https://rpc-mumbai.maticvigil.com"] } },
       block_explorers: { default: { name: "PolygonScan", url: "https://mumbai.polygonscan.com" } },
-      testnet: true
+      testnet: true,
     )
 
     OPTIMISM = Chain.new(
@@ -59,7 +59,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Ether", symbol: "ETH", decimals: 18),
       rpc_urls: { default: { http: ["https://mainnet.optimism.io"] } },
       block_explorers: { default: { name: "Optimism Explorer", url: "https://optimistic.etherscan.io" } },
-      testnet: false
+      testnet: false,
     )
 
     OPTIMISM_GOERLI = Chain.new(
@@ -69,7 +69,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Goerli Ether", symbol: "ETH", decimals: 18),
       rpc_urls: { default: { http: ["https://goerli.optimism.io"] } },
       block_explorers: { default: { name: "Optimism Explorer", url: "https://goerli-optimism.etherscan.io" } },
-      testnet: true
+      testnet: true,
     )
 
     ARBITRUM = Chain.new(
@@ -79,7 +79,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Ether", symbol: "ETH", decimals: 18),
       rpc_urls: { default: { http: ["https://arb1.arbitrum.io/rpc"] } },
       block_explorers: { default: { name: "Arbiscan", url: "https://arbiscan.io" } },
-      testnet: false
+      testnet: false,
     )
 
     ARBITRUM_GOERLI = Chain.new(
@@ -89,7 +89,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Arbitrum Goerli Ether", symbol: "AGOR", decimals: 18),
       rpc_urls: { default: { http: ["https://goerli-rollup.arbitrum.io/rpc"] } },
       block_explorers: { default: { name: "Arbiscan", url: "https://goerli.arbiscan.io" } },
-      testnet: true
+      testnet: true,
     )
 
     BASE = Chain.new(
@@ -99,7 +99,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Ether", symbol: "ETH", decimals: 18),
       rpc_urls: { default: { http: ["https://mainnet.base.org"] } },
       block_explorers: { default: { name: "Basescan", url: "https://basescan.org" } },
-      testnet: false
+      testnet: false,
     )
 
     BASE_GOERLI = Chain.new(
@@ -109,7 +109,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Goerli Ether", symbol: "ETH", decimals: 18),
       rpc_urls: { default: { http: ["https://goerli.base.org"] } },
       block_explorers: { default: { name: "Basescan", url: "https://goerli.basescan.org" } },
-      testnet: true
+      testnet: true,
     )
 
     AVALANCHE = Chain.new(
@@ -119,7 +119,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Avalanche", symbol: "AVAX", decimals: 18),
       rpc_urls: { default: { http: ["https://api.avax.network/ext/bc/C/rpc"] } },
       block_explorers: { default: { name: "SnowTrace", url: "https://snowtrace.io" } },
-      testnet: false
+      testnet: false,
     )
 
     AVALANCHE_FUJI = Chain.new(
@@ -129,7 +129,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Avalanche", symbol: "AVAX", decimals: 18),
       rpc_urls: { default: { http: ["https://api.avax-test.network/ext/bc/C/rpc"] } },
       block_explorers: { default: { name: "SnowTrace", url: "https://testnet.snowtrace.io" } },
-      testnet: true
+      testnet: true,
     )
 
     BSC = Chain.new(
@@ -139,7 +139,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "BNB", symbol: "BNB", decimals: 18),
       rpc_urls: { default: { http: ["https://bsc-dataseed.binance.org"] } },
       block_explorers: { default: { name: "BscScan", url: "https://bscscan.com" } },
-      testnet: false
+      testnet: false,
     )
 
     BSC_TESTNET = Chain.new(
@@ -149,7 +149,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "BNB", symbol: "tBNB", decimals: 18),
       rpc_urls: { default: { http: ["https://data-seed-prebsc-1-s1.binance.org:8545"] } },
       block_explorers: { default: { name: "BscScan", url: "https://testnet.bscscan.com" } },
-      testnet: true
+      testnet: true,
     )
 
     GNOSIS = Chain.new(
@@ -159,7 +159,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "xDAI", symbol: "xDAI", decimals: 18),
       rpc_urls: { default: { http: ["https://rpc.gnosischain.com"] } },
       block_explorers: { default: { name: "Gnosis Scan", url: "https://gnosisscan.io" } },
-      testnet: false
+      testnet: false,
     )
 
     FANTOM = Chain.new(
@@ -169,7 +169,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "Fantom", symbol: "FTM", decimals: 18),
       rpc_urls: { default: { http: ["https://rpc.ftm.tools"] } },
       block_explorers: { default: { name: "FtmScan", url: "https://ftmscan.com" } },
-      testnet: false
+      testnet: false,
     )
 
     CELO = Chain.new(
@@ -179,7 +179,7 @@ module Viem
       native_currency: NativeCurrency.new(name: "CELO", symbol: "CELO", decimals: 18),
       rpc_urls: { default: { http: ["https://forno.celo.org"] } },
       block_explorers: { default: { name: "Celo Explorer", url: "https://explorer.celo.org" } },
-      testnet: false
+      testnet: false,
     )
   end
 end

@@ -49,7 +49,7 @@ RSpec.describe Viem::Utils::Hex do
     end
 
     it "pads to a given size" do
-      expect(described_class.to_hex(1, size: 4)).to eq("0x#{("1".rjust(8, "0"))}")
+      expect(described_class.to_hex(1, size: 4)).to eq("0x#{"1".rjust(8, "0")}")
     end
 
     it "raises for unsupported type" do

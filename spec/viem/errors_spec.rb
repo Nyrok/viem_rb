@@ -50,8 +50,8 @@ RSpec.describe "Viem error hierarchy" do
       err   = described_class.new(
         cause,
         contract_address: "0xA0b8...",
-        function_name:    "transfer",
-        args:             ["0xRecipient", 1000]
+        function_name: "transfer",
+        args: ["0xRecipient", 1000],
       )
       expect(err.message).to include("transfer")
       expect(err.cause).to eq(cause)
@@ -82,7 +82,7 @@ RSpec.describe "Viem error hierarchy" do
       Viem::BlockNotFoundError,
       Viem::TransactionNotFoundError,
       Viem::TransactionReceiptNotFoundError,
-      Viem::WaitForTransactionReceiptTimeoutError
+      Viem::WaitForTransactionReceiptTimeoutError,
     ].each do |klass|
       expect { raise klass }.to raise_error(Viem::Error)
     end

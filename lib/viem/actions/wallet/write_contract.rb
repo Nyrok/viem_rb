@@ -27,11 +27,11 @@ module Viem
             gas: gas, gas_price: gas_price,
             max_fee_per_gas: max_fee_per_gas,
             max_priority_fee_per_gas: max_priority_fee_per_gas,
-            account: acct
+            account: acct,
           )
         rescue RpcError => e
           raise ContractFunctionExecutionError.new(e,
-            contract_address: address, function_name: function_name, args: args)
+                                                   contract_address: address, function_name: function_name, args: args,)
         end
 
         def deploy_contract(abi:, bytecode:, args: [], value: nil, gas: nil, account: nil)

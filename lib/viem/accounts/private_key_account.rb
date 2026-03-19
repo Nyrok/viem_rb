@@ -31,7 +31,7 @@ module Viem
         hash    = Eth::Util.keccak256(encoded)
         sig     = @key.sign(hash)
         "0x#{sig.unpack1("H*")}"
-      rescue StandardError => e
+      rescue => e
         raise Error, "Failed to sign typed data: #{e.message}"
       end
 

@@ -8,44 +8,44 @@ module Viem
 
         ENS_PUBLIC_RESOLVER_ABI = [
           {
-            "name"            => "addr",
-            "type"            => "function",
-            "inputs"          => [{ "type" => "bytes32", "name" => "node" }],
-            "outputs"         => [{ "type" => "address", "name" => "" }],
-            "stateMutability" => "view"
+            "name" => "addr",
+            "type" => "function",
+            "inputs" => [{ "type" => "bytes32", "name" => "node" }],
+            "outputs" => [{ "type" => "address", "name" => "" }],
+            "stateMutability" => "view",
           },
           {
-            "name"            => "name",
-            "type"            => "function",
-            "inputs"          => [{ "type" => "bytes32", "name" => "node" }],
-            "outputs"         => [{ "type" => "string",  "name" => "" }],
-            "stateMutability" => "view"
-          }
+            "name" => "name",
+            "type" => "function",
+            "inputs" => [{ "type" => "bytes32", "name" => "node" }],
+            "outputs" => [{ "type" => "string", "name" => "" }],
+            "stateMutability" => "view",
+          },
         ].freeze
 
         REGISTRY_ABI = [
           {
-            "name"            => "resolver",
-            "type"            => "function",
-            "inputs"          => [{ "type" => "bytes32", "name" => "node" }],
-            "outputs"         => [{ "type" => "address", "name" => "" }],
-            "stateMutability" => "view"
-          }
+            "name" => "resolver",
+            "type" => "function",
+            "inputs" => [{ "type" => "bytes32", "name" => "node" }],
+            "outputs" => [{ "type" => "address", "name" => "" }],
+            "stateMutability" => "view",
+          },
         ].freeze
 
         def get_ens_address(name:)
           node          = namehash(name)
           resolver_addr = read_contract(
             address: ENS_REGISTRY, abi: REGISTRY_ABI,
-            function_name: "resolver", args: [node]
+            function_name: "resolver", args: [node],
           )
           return nil if Utils::Address.is_zero_address?(resolver_addr)
 
           read_contract(
             address: resolver_addr, abi: ENS_PUBLIC_RESOLVER_ABI,
-            function_name: "addr", args: [node]
+            function_name: "addr", args: [node],
           )
-        rescue StandardError => e
+        rescue => e
           raise Error, "ENS resolution failed for #{name}: #{e.message}"
         end
 
@@ -55,15 +55,15 @@ module Viem
           node     = namehash(reversed)
           resolver_addr = read_contract(
             address: ENS_REGISTRY, abi: REGISTRY_ABI,
-            function_name: "resolver", args: [node]
+            function_name: "resolver", args: [node],
           )
           return nil if Utils::Address.is_zero_address?(resolver_addr)
 
           read_contract(
             address: resolver_addr, abi: ENS_PUBLIC_RESOLVER_ABI,
-            function_name: "name", args: [node]
+            function_name: "name", args: [node],
           )
-        rescue StandardError
+        rescue
           nil
         end
 

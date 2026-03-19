@@ -10,7 +10,7 @@ RSpec.describe Viem::Transports::Fallback do
     stub_request(:post, url).to_return(
       status: 200,
       body: { jsonrpc: "2.0", id: 1, result: result }.to_json,
-      headers: { "Content-Type" => "application/json" }
+      headers: { "Content-Type" => "application/json" },
     )
   end
 

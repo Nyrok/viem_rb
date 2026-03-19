@@ -29,7 +29,11 @@ module Viem
           loop do
             receipt = @transport.request("eth_getTransactionReceipt", [hash])
             return format_receipt(receipt) if receipt
-            raise WaitForTransactionReceiptTimeoutError, "Timeout after #{timeout}s waiting for #{hash}" if Time.now > deadline
+
+            if Time.now > deadline
+              raise WaitForTransactionReceiptTimeoutError,
+                    "Timeout after #{timeout}s waiting for #{hash}"
+            end
 
             sleep poll_interval
           end

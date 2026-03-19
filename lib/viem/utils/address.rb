@@ -9,7 +9,7 @@ module Viem
         return false unless value.is_a?(String)
 
         Eth::Address.new(value).valid?
-      rescue StandardError
+      rescue
         false
       end
 

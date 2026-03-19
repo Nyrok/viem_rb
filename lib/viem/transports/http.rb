@@ -19,9 +19,7 @@ module Viem
       def request(method, params = [])
         body = build_rpc_body(method, params)
         resp = @mutex.synchronize { @conn.post("/", body.to_json) }
-        unless resp.success?
-          raise HttpRequestError.new("HTTP #{resp.status}", status: resp.status, body: resp.body)
-        end
+        raise HttpRequestError.new("HTTP #{resp.status}", status: resp.status, body: resp.body) unless resp.success?
 
         parse_response(resp.body)
       rescue Faraday::Error => e

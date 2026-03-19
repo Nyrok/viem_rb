@@ -21,28 +21,23 @@ module Viem
           nonce     ||= get_transaction_count(address: acct.address)
           chain_id    = @chain&.id || get_chain_id
 
+          gas ||= begin
+            estimate_gas(to: to, from: acct.address, data: data, value: value)
+          rescue
+            21_000
+          end
           if max_fee_per_gas
-            gas ||= begin
-              estimate_gas(to: to, from: acct.address, data: data, value: value)
-            rescue StandardError
-              21_000
-            end
             tx = build_eip1559_tx(
               to: to, value: value, data: data, gas: gas,
               max_fee_per_gas: max_fee_per_gas,
               max_priority_fee_per_gas: max_priority_fee_per_gas,
-              nonce: nonce, chain_id: chain_id
+              nonce: nonce, chain_id: chain_id,
             )
           else
-            gas       ||= begin
-              estimate_gas(to: to, from: acct.address, data: data, value: value)
-            rescue StandardError
-              21_000
-            end
             gas_price ||= get_gas_price
             tx = build_legacy_tx(
               to: to, value: value, data: data, gas: gas,
-              gas_price: gas_price, nonce: nonce, chain_id: chain_id
+              gas_price: gas_price, nonce: nonce, chain_id: chain_id,
             )
           end
 
@@ -59,27 +54,27 @@ module Viem
 
         def build_eip1559_tx(to:, value:, data:, gas:, max_fee_per_gas:, max_priority_fee_per_gas:, nonce:, chain_id:)
           Eth::Tx::Eip1559.new({
-            chain_id:                 chain_id,
-            nonce:                    nonce,
-            max_priority_fee_per_gas: max_priority_fee_per_gas || Utils::Units.parse_gwei("1.5"),
-            max_fee_per_gas:          max_fee_per_gas,
-            gas_limit:                gas,
-            to:                       to,
-            value:                    value,
-            data:                     data || ""
-          })
+                                 chain_id: chain_id,
+                                 nonce: nonce,
+                                 max_priority_fee_per_gas: max_priority_fee_per_gas || Utils::Units.parse_gwei("1.5"),
+                                 max_fee_per_gas: max_fee_per_gas,
+                                 gas_limit: gas,
+                                 to: to,
+                                 value: value,
+                                 data: data || "",
+                               })
         end
 
         def build_legacy_tx(to:, value:, data:, gas:, gas_price:, nonce:, chain_id:)
           Eth::Tx::Legacy.new({
-            chain_id:  chain_id,
-            nonce:     nonce,
-            gas_price: gas_price,
-            gas_limit: gas,
-            to:        to,
-            value:     value,
-            data:      data || ""
-          })
+                                chain_id: chain_id,
+                                nonce: nonce,
+                                gas_price: gas_price,
+                                gas_limit: gas,
+                                to: to,
+                                value: value,
+                                data: data || "",
+                              })
         end
 
         def sign_tx(account, tx)

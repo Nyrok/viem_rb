@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
                        "and utilities for Ruby on Rails 7+ applications."
   spec.homepage      = "https://github.com/Nyrok/viem_rb"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.0.0"
 
   spec.files = Dir["lib/**/*", "README.md", "CHANGELOG.md", "LICENSE"]
   spec.require_paths = ["lib"]

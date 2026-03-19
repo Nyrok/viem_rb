@@ -5,9 +5,9 @@ module Viem
     class TestClient < PublicClient
       def mine(blocks: 1, interval: 0)
         @transport.request("anvil_mine", [
-          Utils::Hex.number_to_hex(blocks),
-          Utils::Hex.number_to_hex(interval)
-        ])
+                             Utils::Hex.number_to_hex(blocks),
+                             Utils::Hex.number_to_hex(interval),
+                           ],)
       end
 
       def set_balance(address:, value:)

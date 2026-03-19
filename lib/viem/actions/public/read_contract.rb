@@ -11,7 +11,7 @@ module Viem
           Abi::Decoder.decode_function_result(abi_item, result)
         rescue RpcError => e
           raise ContractFunctionExecutionError.new(e,
-            contract_address: address, function_name: function_name, args: args)
+                                                   contract_address: address, function_name: function_name, args: args,)
         end
 
         def simulate_contract(address:, abi:, function_name:, args: [], account: nil, value: nil, block_tag: "latest")
@@ -22,7 +22,7 @@ module Viem
           Abi::Decoder.decode_function_result(abi_item, result)
         rescue RpcError => e
           raise ContractFunctionExecutionError.new(e,
-            contract_address: address, function_name: function_name, args: args)
+                                                   contract_address: address, function_name: function_name, args: args,)
         end
 
         private
