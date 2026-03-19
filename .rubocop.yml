@@ -1,6 +1,7 @@
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 2.6
+  SuggestExtensions: false
   Exclude:
     - "vendor/**/*"
     - "bin/**/*"
@@ -28,16 +29,53 @@ Metrics/ClassLength:
 Metrics/AbcSize:
   Max: 30
 
-# Allow longer parameter lists in initializers
-Metrics/ParameterLists:
-  Max: 8
-
 # Documentation is not required for modules/classes
 Style/Documentation:
   Enabled: false
 
+# viem API mirrors viem.sh naming (get_, is_) — disable these cops
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/PredicatePrefix:
+  Enabled: false
+
+# Ethereum actions are inherently complex
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/PerceivedComplexity:
+  Max: 15
+
+Metrics/ModuleLength:
+  Max: 200
+
+# Chain definitions, typed data, contract writes need more params
+Metrics/ParameterLists:
+  Max: 12
+
+# short variable names (e.g. `to`, `v`) are idiomatic in Ethereum
+Naming/MethodParameterName:
+  Enabled: false
+
+# Duplicate branch: accept in complex case/when Ethereum logic
+Lint/DuplicateBranch:
+  Enabled: false
+
+# Unused method args in interface methods are intentional
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+# Missing super in transport initializers is intentional (no state in Base)
+Lint/MissingSuper:
+  Enabled: false
+
+# Useless constant scoping false positive
+Lint/UselessConstantScoping:
+  Enabled: false
+
 # Allow trailing commas in multi-line literals
-Style/TrailingCommaInArgList:
+Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: consistent_comma
 
 Style/TrailingCommaInArrayLiteral:
