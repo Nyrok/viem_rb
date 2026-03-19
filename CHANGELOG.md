@@ -5,16 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-03-19
+
+### Fixed
+- Bumped minimum required Ruby version to `>= 3.0.0` (transitive dependency `rbsecp256k1` via `eth` is incompatible with Ruby < 3.0)
+- CI matrix updated to Ruby 3.0–3.3, RuboCop on 3.3
+- Fixed all RuboCop offenses across lib and spec files
+- Fixed invalid cop name `Style/TrailingCommaInArgList` → `Style/TrailingCommaInArguments`
+
 ## [0.1.1] - 2026-03-19
 
 ### Added
 - Extended test suite: ABI decoder, ABI parser, Hash utils, error hierarchy, chain definitions, and Fallback transport specs (161 examples total)
-- GitHub Actions CI workflow — tests on Ruby 2.6 through 3.2, RuboCop on 3.2
+- GitHub Actions CI workflow — tests on Ruby 3.0 through 3.3, RuboCop on 3.3
 - GitHub Actions publish workflow — auto-publishes to RubyGems on GitHub release
 
 ### Fixed
 - Corrected author name from `Noryk` to `Nyrok` in gemspec, README and LICENSE
-- Lowered required Ruby version to `>= 2.6.0`
 
 ## [0.1.0] - 2025-01-01
 
