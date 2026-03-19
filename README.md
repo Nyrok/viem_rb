@@ -369,7 +369,7 @@ end
 
 ## License
 
-MIT License. Copyright 2025 Noryk. See [LICENSE](LICENSE) for details.
+MIT License. Copyright 2025 Nyrok. See [LICENSE](LICENSE) for details.
 
 ---
 

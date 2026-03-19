@@ -5,7 +5,7 @@ require_relative "lib/viem/version"
 Gem::Specification.new do |spec|
   spec.name          = "viem_rb"
   spec.version       = Viem::VERSION
-  spec.authors       = ["Noryk"]
+  spec.authors       = ["Nyrok"]
   spec.email         = ["nyrokgaming1@gmail.com"]
   spec.summary       = "Ruby adaptation of viem — Ethereum interface for Rails"
   spec.description   = "A Ruby/Rails adaptation of the viem TypeScript library. Provides type-safe Ethereum clients, ABI encoding/decoding, account management, and utilities for Ruby on Rails 7+ applications."
