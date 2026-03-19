@@ -3,11 +3,11 @@
 [![Gem Version](https://img.shields.io/gem/v/viem_rb.svg)](https://rubygems.org/gems/viem_rb)
 [![Gem Downloads](https://img.shields.io/gem/dt/viem_rb.svg)](https://rubygems.org/gems/viem_rb)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Ruby](https://img.shields.io/badge/ruby-%3E%3D%202.7-red.svg)](https://www.ruby-lang.org)
+[![Ruby](https://img.shields.io/badge/ruby-%3E%3D%202.6-red.svg)](https://www.ruby-lang.org)
 
 📦 **[https://rubygems.org/gems/viem_rb](https://rubygems.org/gems/viem_rb)**
 
-A Ruby/Rails adaptation of [viem](https://viem.sh) — the TypeScript Ethereum library. Provides Ethereum clients, ABI encoding/decoding, account management, and utilities for Ruby 2.7+ and Rails 7+ applications.
+A Ruby/Rails adaptation of [viem](https://viem.sh) — the TypeScript Ethereum library. Provides Ethereum clients, ABI encoding/decoding, account management, and utilities for Ruby 2.6+ and Rails 7+ applications.
 
 ## Installation
 
